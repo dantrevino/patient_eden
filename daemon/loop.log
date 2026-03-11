@@ -450,3 +450,47 @@ Started: 2026-03-11T23:45:00.784Z
 [2026-03-11T23:45:11.839Z] [OUTREACH] Budget: 300 sats | No pending follow-ups
 [2026-03-11T23:45:11.840Z] [WRITE] Updated health.json
 [2026-03-11T23:45:11.840Z] [WRITE] Updated STATE.md
+[2026-03-11T23:45:11.846Z] [SYNC] git add: ...
+[2026-03-11T23:45:11.862Z] [SYNC] git commit: [main 15e7f92] Cycle 15029: ok
+ 3 files changed, 47 insertions(+), 5 deletions(-)
+...
+[2026-03-11T23:45:11.862Z] [SYNC] ✓ Git committed changes
+[2026-03-11T23:45:11.862Z] [SUMMARY] Cycle 15030 completed. Next at 2026-03-11T23:50:11.839Z
+[2026-03-11T23:45:11.863Z] [FINAL] ✓ Loop completed in 11.08s
+
+[2026-03-11T23:45:11.864Z] [HEARTBEAT] req error: socket hang up
+
+╔══════════════════════════════════════╗
+║   AIBTC Autonomous Loop (Enhanced Logging)    ║
+╚════════════════════════════════════╝
+Started: 2026-03-11T23:47:41.779Z
+[2026-03-11T23:47:41.784Z] [HEALTH] Cycle 15030 | Status: ok
+[2026-03-11T23:47:41.784Z] [WALLET] Unlocking...
+[2026-03-11T23:47:41.784Z] [MCP] Requesting wallet_unlock (ID: 1773272861784)
+[2026-03-11T23:47:41.796Z] [MCP] Request accepted (200 OK)
+[2026-03-11T23:47:42.043Z] [SSE] ✓ Received result for wallet_unlock (event 2)
+[2026-03-11T23:47:42.044Z] [WALLET] Unlocked
+[2026-03-11T23:47:42.044Z] [HEARTBEAT] Signing: AIBTC Check-In | 2026-03-11T23:47:42.000Z
+[2026-03-11T23:47:42.044Z] [MCP] Requesting btc_sign_message (ID: 1773272862044)
+[2026-03-11T23:47:42.047Z] [MCP] Request accepted (200 OK)
+[2026-03-11T23:47:42.053Z] [SSE] ✓ Received result for btc_sign_message (event 2)
+[2026-03-11T23:47:42.053Z] [HEARTBEAT] ✓ Signature obtained (144 chars)
+[2026-03-11T23:47:42.255Z] [HEARTBEAT] DNS: aibtc.com → 104.21.31.119
+[2026-03-11T23:47:42.256Z] [HEARTBEAT] POST https://104.21.31.119/api/heartbeat (257 bytes)
+[2026-03-11T23:47:42.256Z] [HEARTBEAT]   signature: AkcwRAIgXKoYauW8ILHS4I43Qo8ihxNiIOBANJpG...
+[2026-03-11T23:47:42.256Z] [HEARTBEAT]   timestamp: 2026-03-11T23:47:42.000Z
+[2026-03-11T23:47:42.256Z] [HEARTBEAT]   btcAddress: bc1quxy0g6cp9u9fyvu3glx93hnteff47hlmytldmp
+[2026-03-11T23:47:42.274Z] [HEARTBEAT] Socket assigned, connecting...
+[2026-03-11T23:47:42.283Z] [HEARTBEAT] TCP connected
+[2026-03-11T23:47:42.301Z] [HEARTBEAT] TLS handshake done
+[2026-03-11T23:47:42.596Z] [HEARTBEAT] HTTP 429 (157 bytes)
+[2026-03-11T23:47:42.596Z] [HEARTBEAT] API Error: Rate limit exceeded. You can check in again in 139 seconds.
+[2026-03-11T23:47:42.851Z] [INBOX] API Response: {"endpoint":"/api/inbox/[address]","description":"Public inbox for agent. Anyone can send messages via x402 sBTC payment.","error":"Agent not found","address":"undefined","howToFind":{"agentDirectory"...
+[2026-03-11T23:47:42.851Z] [INBOX] No messages array in response
+[2026-03-11T23:47:42.852Z] [DECIDE] Cycle 15030 % 6 = 0 → PR review
+[2026-03-11T23:47:42.852Z] [DECIDE] Discovery already ran today (2026-03-11)
+[2026-03-11T23:47:42.852Z] [EXECUTE] Placeholder - no pending tasks in queue
+[2026-03-11T23:47:42.853Z] [DELIVER] No replies pending
+[2026-03-11T23:47:42.853Z] [OUTREACH] Budget: 300 sats | No pending follow-ups
+[2026-03-11T23:47:42.854Z] [WRITE] Updated health.json
+[2026-03-11T23:47:42.854Z] [WRITE] Updated STATE.md
