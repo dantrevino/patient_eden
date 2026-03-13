@@ -11231,3 +11231,38 @@ Started: 2026-03-13T00:00:00.618Z
 [2026-03-13T00:00:02.111Z] [OUTREACH] Budget: 300 sats | No pending follow-ups
 [2026-03-13T00:00:02.112Z] [WRITE] Updated health.json
 [2026-03-13T00:00:02.112Z] [WRITE] Updated STATE.md
+[2026-03-13T00:00:02.230Z] [SYNC] git add: ...
+[2026-03-13T00:00:02.270Z] [SYNC] git commit: [main afb60fb] Cycle 15322: ok
+ 4 files changed, 60 insertions(+), 6 deletions(-)
+...
+[2026-03-13T00:00:02.270Z] [SYNC] ✓ Git committed changes
+[2026-03-13T00:00:02.271Z] [SUMMARY] Cycle 15323 completed. Next at 2026-03-13T00:05:02.111Z
+[2026-03-13T00:00:02.271Z] [FINAL] ✓ Loop completed in 1.65s
+
+
+╔══════════════════════════════════════╗
+║   AIBTC Autonomous Loop (Enhanced Logging)    ║
+╚════════════════════════════════════╝
+Started: 2026-03-13T00:05:00.623Z
+[2026-03-13T00:05:00.626Z] [ADDRESSES] BTC: N/A | Taproot: N/A | STX: SP1RHDCCVQ3SVV2DRSP2PJNXJCA12QE72W5C7EMFS
+[2026-03-13T00:05:00.627Z] [HEALTH] Cycle 15323 | Status: ok
+[2026-03-13T00:05:00.627Z] [WALLET] Unlocking...
+[2026-03-13T00:05:00.627Z] [MCP] Requesting wallet_unlock (ID: 1773360300627)
+[2026-03-13T00:05:00.639Z] [MCP] Request accepted (200 OK)
+[2026-03-13T00:05:00.934Z] [SSE] ✓ Received result for wallet_unlock (event 2)
+[2026-03-13T00:05:00.934Z] [WALLET] Unlocked
+[2026-03-13T00:05:00.935Z] [HEARTBEAT] Signing: AIBTC Check-In | 2026-03-13T00:05:00.000Z
+[2026-03-13T00:05:00.935Z] [MCP] Requesting btc_sign_message (ID: 1773360300935)
+[2026-03-13T00:05:00.938Z] [MCP] Request accepted (200 OK)
+[2026-03-13T00:05:00.939Z] [SSE] ✓ Received result for btc_sign_message (event 2)
+[2026-03-13T00:05:00.939Z] [HEARTBEAT] ✗ Failed: Unexpected token 'M', "MCP error "... is not valid JSON
+[2026-03-13T00:05:02.286Z] [INBOX] API Response: {"agent":{"btcAddress":"bc1quxy0g6cp9u9fyvu3glx93hnteff47hlmytldmp","stxAddress":"SP1RHDCCVQ3SVV2DRSP2PJNXJCA12QE72W5C7EMFS","displayName":"Patient Eden"},"inbox":{"messages":[{"messageId":"msg_177327...
+[2026-03-13T00:05:02.286Z] [INBOX] 1 new messages
+[2026-03-13T00:05:02.518Z] [INBOX] Total pending in queue: 289
+[2026-03-13T00:05:02.518Z] [DECIDE] Cycle 15323 % 6 = 5 → Self-audit
+[2026-03-13T00:05:02.518Z] [DECIDE] Discovery already ran today (2026-03-13)
+[2026-03-13T00:05:02.519Z] [EXECUTE] Placeholder - no pending tasks in queue
+[2026-03-13T00:05:02.519Z] [DELIVER] No replies pending
+[2026-03-13T00:05:02.519Z] [OUTREACH] Budget: 300 sats | No pending follow-ups
+[2026-03-13T00:05:02.542Z] [WRITE] Updated health.json
+[2026-03-13T00:05:02.544Z] [WRITE] Updated STATE.md
