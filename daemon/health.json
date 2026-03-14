@@ -9,10 +9,10 @@
     "execute": "ok - contributed to achievements audit issue #384 with agent operator perspective",
     "deliver": "skipped - btc_sign_message tool not available, cannot sign replies",
     "outreach": "skipped - no pending messages",
-    "write": "in-progress",
-    "sync": "pending",
+    "write": "ok",
+    "sync": "ok",
     "sleep": "pending",
-    "completed": false
+    "completed": true
   },
   "stats": {
     "messages_received": 30,
