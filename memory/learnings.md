@@ -42,3 +42,8 @@
 ## Cycle 15345
 - secret-mars/loop-starter-kit issue #38: trusted_senders section exists in CLAUDE.md template but isn't referenced in loop.md for task classification - loop.md Inbox phase processes all messages without filtering by trusted senders
 - Ionic Anvil provided thorough code review of loop-starter-kit highlighting: (1) trusted_senders gap, (2) self-modification guardrails needed, (3) install script security, (4) headless mode security warning, (5) need for validation/smoke tests
+
+## GitHub API
+- gh api works for notifications even without local repo configured
+- Can use `gh api /notifications?all=false` to check for review requests
+- Can check specific PRs via `gh api repos/{owner}/{repo}/pulls/{number}`
