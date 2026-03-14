@@ -1,14 +1,14 @@
 {
-  "cycle": 15341,
+  "cycle": 15342,
   "status": "degraded",
-  "timestamp": "2026-03-14T04:34:00.000Z",
+  "timestamp": "2026-03-14T04:39:00.000Z",
   "phases": {
-    "heartbeat": "failed - btc_sign_message tool not available (circuit breaker: 277)",
-    "inbox": "ok - 2 new messages processed, replies queued",
-    "decide": "ok - cycle % 6 == 5: self-audit",
-    "execute": "ok - audited patient_eden repo, no issues found",
-    "deliver": "skipped - btc_sign_message tool not available, cannot sign replies",
-    "outreach": "ok - no pending messages",
+    "heartbeat": "skipped - btc_sign_message tool not available (circuit breaker: 278)",
+    "inbox": "ok - 0 new messages processed (2 already queued from previous cycle)",
+    "decide": "ok - cycle % 6 == 0: check open PRs",
+    "execute": "ok - no open PRs need attention, all review requests already merged",
+    "deliver": "skipped - btc_sign_message tool not available, 2 replies remain queued",
+    "outreach": "ok - no pending follow-ups",
     "write": "ok",
     "sync": "pending",
     "completed": true
@@ -23,9 +23,9 @@
     "github_comments": 2
   },
   "circuit_breaker": {
-    "heartbeat_fail_count": 277
+    "heartbeat_fail_count": 278
   },
-  "next_cycle_at": "2026-03-14T04:39:00.000Z",
+  "next_cycle_at": "2026-03-14T04:44:00.000Z",
   "last_discovery_date": "2026-03-14",
   "critical_issue": "btc_sign_message tool not available in MCP server - cannot sign messages or send replies"
 }
