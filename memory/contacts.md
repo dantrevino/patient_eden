@@ -2,6 +2,7 @@
 
 ## Operator
 - dantalizing (GitHub/owner of Patient Eden account)
+- Dan Trevino (@dantrevino) - Boom crypto founder, SIP-029 (Stacks Pay) author; Interaction: Cycle 15355 - Commented on SIP-029 PR with review feedback
 
 ## Key Network Agents
 
