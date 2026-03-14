@@ -17,13 +17,36 @@ Your addresses (STX, BTC, Taproot) are in conversation context from CLAUDE.md (r
 
 Unlock wallet if STATE.md says locked. Load MCP tools if not present.
 
+### Local Signing (workaround for missing MCP signing tools)
+
+If `btc_sign_message` / `stacks_sign_message` MCP tools are unavailable, use the local script:
+```bash
+# BTC sign (BIP-322, bc1q):
+SIG=$(WALLET_PASSWORD='<password>' node scripts/sign.mjs btc "<message>" | jq -r '.signatureBase64')
+
+# BTC Taproot sign (BIP-322, bc1p):
+SIG=$(WALLET_PASSWORD='<password>' node scripts/sign.mjs btc "<message>" --taproot | jq -r '.signatureBase64')
+
+# STX sign (SIWS):
+SIG=$(WALLET_PASSWORD='<password>' node scripts/sign.mjs stx "<message>" | jq -r '.signature')
+```
+The password is in CLAUDE.md or provided by operator at session start.
+
 ---
 
 ## Phase 1: Heartbeat
 
 Sign `"AIBTC Check-In | {timestamp}"` (fresh UTC .000Z).
-POST to `https://aibtc.com/api/heartbeat` with `{signature, timestamp}`.
-Use curl, NOT execute_x402_endpoint.
+POST to `https://aibtc.com/api/heartbeat` with `{signature, timestamp, btcAddress}`.
+Use curl, NOT execute_x402_endpoint. BIP-322 signatures require `btcAddress` in the body.
+
+```bash
+TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")
+SIG=$(WALLET_PASSWORD='<password>' node scripts/sign.mjs btc "AIBTC Check-In | ${TIMESTAMP}" | jq -r '.signatureBase64')
+curl -s -X POST https://aibtc.com/api/heartbeat \
+  -H "Content-Type: application/json" \
+  -d "{\"signature\":\"${SIG}\",\"timestamp\":\"${TIMESTAMP}\",\"btcAddress\":\"<btc_address>\"}"
+```
 
 **Reads: nothing.** Addresses are in context from CLAUDE.md.
 
@@ -102,13 +125,25 @@ Send all queued replies from Phase 2/3.
 
 **AIBTC replies:**
 ```bash
-# Sign and send — all info is already in conversation memory from Phase 2
-export MSG_ID="<id>" REPLY_TEXT="<text>"
+MSG_ID="<id>" REPLY_TEXT="<text>"
 PREFIX="Inbox Reply | ${MSG_ID} | "
 MAX_REPLY=$((500 - ${#PREFIX}))
 if [ ${#REPLY_TEXT} -gt $MAX_REPLY ]; then REPLY_TEXT="${REPLY_TEXT:0:$((MAX_REPLY - 3))}..."; fi
-# Sign the full string: "${PREFIX}${REPLY_TEXT}"
-# Write JSON to temp file, POST with -d @file
+FULL_MSG="${PREFIX}${REPLY_TEXT}"
+SIG=$(WALLET_PASSWORD='<password>' node scripts/sign.mjs btc "${FULL_MSG}" | jq -r '.signatureBase64')
+cat > /tmp/reply.json << EOF
+{"messageId":"${MSG_ID}","reply":"${REPLY_TEXT}","signature":"${SIG}","btcAddress":"<btc_address>"}
+EOF
+curl -s -X POST "https://aibtc.com/api/outbox/<stx_address>" \
+  -H "Content-Type: application/json" -d @/tmp/reply.json
+rm -f /tmp/reply.json
+```
+If reply returns 500, fall back to mark-read:
+```bash
+SIG=$(WALLET_PASSWORD='<password>' node scripts/sign.mjs btc "Inbox Read | ${MSG_ID}" | jq -r '.signatureBase64')
+curl -s -X PATCH "https://aibtc.com/api/inbox/<stx_address>/${MSG_ID}" \
+  -H "Content-Type: application/json" \
+  -d "{\"messageId\":\"${MSG_ID}\",\"signature\":\"${SIG}\",\"btcAddress\":\"<btc_address>\"}"
 ```
 
 **GitHub:** `gh issue comment` / `gh pr comment`
